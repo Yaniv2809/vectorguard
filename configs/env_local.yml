@@ -1,3 +1,12 @@
-llm_provider: ollama
-model_name: llama3
-vector_db: chroma_local
+environment: "local"
+
+llm_settings:
+  provider: "ollama"
+  judge_model: "llama3.2"
+  temperature: 0.0
+  base_url: "http://localhost:11434"
+
+vector_db:
+  provider: "chroma"
+  collection_name: "vectorguard_financials"
+  persist_directory: "./.chroma_data"
