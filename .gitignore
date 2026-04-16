@@ -1,0 +1,21 @@
+# Environments
+venv/
+env/
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Vector Databases (ChromaDB)
+.chroma_data/
+.chroma_test_data/
+
+# FixtureForge Cache
+.fixtureforge/
+
+# IDEs
+.vscode/
+.idea/

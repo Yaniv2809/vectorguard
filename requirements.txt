@@ -1,0 +1,9 @@
+qdrant-client==1.9.1
+sentence-transformers==2.7.0
+faker==24.0.0
+pytest==7.4.4
+pytest-xdist==3.5.0
+pytest-asyncio==0.23.6
+allure-pytest==2.13.5
+pip-audit==2.7.3
+python-dotenv==1.0.1
