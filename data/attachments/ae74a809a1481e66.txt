@@ -1,0 +1,1 @@
+WARNING  core.vector_db_manager:vector_db_manager.py:79 Database reset complete. Cleared 1 records.

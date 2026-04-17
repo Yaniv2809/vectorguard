@@ -1,1 +1,0 @@
-ERROR    core.async_llm_client:async_llm_client.py:62 Critical Error: Failed to connect to local Ollama API. Is Ollama running? Details: Cannot connect to host localhost:11434 ssl:default [Multiple exceptions: [Errno 111] Connect call failed ('::1', 11434, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 11434)]
