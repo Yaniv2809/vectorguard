@@ -1,8 +1,10 @@
 """מעטפת ל-fixtureforge לחילול נתונים פיננסיים רגישים"""
+import base64
 import logging
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from fixtureforge import Forge
+from data_forge.poison_injector import PoisonInjector
 
 logger = logging.getLogger(__name__)
 
@@ -78,6 +80,41 @@ class DataGenerator:
         )
         
         record.tenant_id = target_tenant_id
+        return record
+
+    def generate_poisoned_record_from_payload(
+        self, target_tenant_id: str, payload: dict
+    ) -> FinancialRecord:
+        """
+        יוצר רשומה מורעלת מתוך ערך ב-payload_library.yml.
+        תומך בשדה encoding: base64 — מפענח לפני ההזרקה (מדמה תרחיש decode-and-execute).
+
+        Args:
+            target_tenant_id: מזהה הטננט שהרשומה תשויך אליו.
+            payload: מילון payload בודד מ-payload_library.yml
+                     (מפתחות: id, category, intent, text, encoding אופציונלי).
+
+        Returns:
+            FinancialRecord עם ה-payload מוזרק ל-transaction_summary.
+        """
+        raw_text = payload["text"]
+        encoding = payload.get("encoding")
+
+        if encoding == "base64":
+            injection_text = base64.b64decode(raw_text).decode("utf-8")
+            logger.info(f"Decoded base64 payload '{payload['id']}' before injection.")
+        else:
+            injection_text = raw_text
+
+        record = self.forge.create(FinancialRecord)
+        record.tenant_id = target_tenant_id
+        record.transaction_summary = PoisonInjector.inject_direct(
+            record.transaction_summary, injection_text
+        )
+        logger.warning(
+            f"Generated poisoned record from payload '{payload['id']}' "
+            f"for tenant '{target_tenant_id}'."
+        )
         return record
 
 # דוגמת שימוש מבודדת (לצורך בדיקה מקומית)

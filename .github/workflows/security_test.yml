@@ -24,8 +24,6 @@ jobs:
           pip install -e .
 
       - name: Run Security Tests
-        # הערה: אנחנו מריצים רק את הטסטים שלא דורשים Ollama ב-CI
-        # או משתמשים ב-Mocks כדי שה-Build לא ייכשל
         run: pytest tests/ --alluredir=allure-results
         continue-on-error: true
 

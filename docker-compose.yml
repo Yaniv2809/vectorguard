@@ -18,14 +18,12 @@ services:
     build: .
     environment:
       # חשוב: אנחנו אומרים למערכת לחפש את השופט בקונטיינר השני, לא ב-localhost
-      - OLLAMA_BASE_URL=http://llm-judge:11434 
+      - OLLAMA_BASE_URL=http://llm-judge:11434
     depends_on:
       - llm-judge
 
-volumes:
-  ollama_models:
-
-allure:
+  # 3. שירות דוחות Allure
+  allure:
     image: frankescobar/allure-docker-service
     ports:
       - "5050:5050"
@@ -34,3 +32,6 @@ allure:
     volumes:
       - ./allure-results:/app/allure-results
       - ./allure-report:/app/allure-report
+
+volumes:
+  ollama_models:

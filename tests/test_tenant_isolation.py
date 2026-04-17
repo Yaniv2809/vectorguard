@@ -8,6 +8,8 @@ logger = logging.getLogger(__name__)
 
 @allure.feature("Access Control")
 @allure.story("Tenant Isolation (BOLA)")
+@allure.label("owasp", "LLM02")
+@allure.label("cwe", "CWE-284")
 @allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.asyncio
 async def test_semantic_tenant_isolation(db_manager):
