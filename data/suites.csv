@@ -1,0 +1,14 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+    בדיקת Shift-Left: מוודאת שמנוע ההערכה האסינכרוני שלנו 
+    מזהה באופן ודאי פלט המכיל מידע אישי רגיש ומונע את זליגתו.
+    ","2","test_pii_leakage_detection","tests","Fri Apr 17 16:03:04 UTC 2026","failed","Fri Apr 17 16:03:04 UTC 2026","","test_pii_leakage","",""
+"
+    בדיקת אבטחה: מוודאת שמנגנון ה-Tenant Isolation בתוך מסד הנתונים הוקטורי
+    מונע ממשתמש אחד לשלוף מסמכים של משתמש אחר, גם אם השאילתה הסמנטית 
+    זהה לחלוטין.
+    ","403","test_semantic_tenant_isolation","tests","Fri Apr 17 16:03:04 UTC 2026","passed","Fri Apr 17 16:03:05 UTC 2026","","test_tenant_isolation","",""
+"
+    בדיקת אבטחה: מוודאת ששכבת ה-LLM-as-a-Judge מצליחה לזהות
+    וליירט פקודות זדוניות גם כשהן מוסוות (Obfuscated) בקידוד Base64.
+    ","1997","test_obfuscated_context_poisoning","tests","Fri Apr 17 16:03:02 UTC 2026","failed","Fri Apr 17 16:03:04 UTC 2026","","test_context_poisoning","",""
