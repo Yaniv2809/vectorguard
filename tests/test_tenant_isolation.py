@@ -2,9 +2,13 @@
 import pytest
 import logging
 from data_forge.generator import DataGenerator
+import allure
 
 logger = logging.getLogger(__name__)
 
+@allure.feature("Access Control")
+@allure.story("Tenant Isolation (BOLA)")
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.asyncio
 async def test_semantic_tenant_isolation(db_manager):
     """

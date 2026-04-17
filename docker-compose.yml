@@ -1,0 +1,36 @@
+
+version: '3.8'
+
+services:
+  # 1. מנוע ההערכה - סוכן ה-AI המקומי שלנו
+  llm-judge:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    # פקודה זו מוודאת שהמודל gemma3:1b יורד כשהשרת עולה
+    command: >
+      sh -c "ollama serve & sleep 5 && ollama pull gemma3:1b && wait"
+
+  # 2. האפליקציה שלנו - VectorGuard
+  vectorguard:
+    build: .
+    environment:
+      # חשוב: אנחנו אומרים למערכת לחפש את השופט בקונטיינר השני, לא ב-localhost
+      - OLLAMA_BASE_URL=http://llm-judge:11434 
+    depends_on:
+      - llm-judge
+
+volumes:
+  ollama_models:
+
+allure:
+    image: frankescobar/allure-docker-service
+    ports:
+      - "5050:5050"
+    environment:
+      - CHECK_RESULTS_EVERY_SECONDS=3
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./allure-report:/app/allure-report
