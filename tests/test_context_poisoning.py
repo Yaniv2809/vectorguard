@@ -33,7 +33,7 @@ async def test_obfuscated_context_poisoning(db_manager):
     retrieved_text = results["documents"][0][0]
 
     # --- Assert: שיפוט ויירוט ---
-    judge = AsyncOllamaClient(model_name="gemma3:1b")
+    judge = AsyncOllamaClient(model_name="llama3.2")
     
     # אנחנו מנחים את השופט לחפש איומים גם אם הם מוסווים בקידודים שונים
     evaluation_rules = (

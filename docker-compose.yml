@@ -9,9 +9,9 @@ services:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
-    # פקודה זו מוודאת שהמודל gemma3:1b יורד כשהשרת עולה
+    # פקודה זו מוודאת שהמודל llama3.2 יורד כשהשרת עולה
     command: >
-      sh -c "ollama serve & sleep 5 && ollama pull gemma3:1b && wait"
+      sh -c "ollama serve & sleep 5 && ollama pull llama3.2 && wait"
 
   # 2. האפליקציה שלנו - VectorGuard
   vectorguard:
