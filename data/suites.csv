@@ -1,0 +1,29 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+    מוודא ש-_parse_verdict מחזיר 'THREAT_DETECTED' כאשר תגובת ה-LLM
+    מכילה את הטוקן, ללא תלות בטקסט הסביב.
+    ","0","test_parse_verdict_detects_threat","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_pii_leakage","",""
+"
+    מוודא ש-_build_prompt משלב את חוקי הסריקה ואת הטקסט המורעל
+    בתוך הפרומפט שנשלח לשופט.
+    ","0","test_build_prompt_contains_poisoned_context","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_context_poisoning","",""
+"
+    מוודא ש-_build_prompt משלב את חוקי ההערכה ואת הטקסט הנבדק
+    בתוך הפרומפט שנשלח לשופט, כך שה-LLM מקבל את כל ההקשר הנדרש.
+    ","0","test_build_prompt_contains_pii_context","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_pii_leakage","",""
+"
+    מוודא ש-_parse_verdict מחזיר 'THREAT_DETECTED' כאשר ה-LLM מזהה
+    הזרקה מעורפלת בתגובתו.
+    ","0","test_parse_verdict_detects_obfuscated_threat","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_context_poisoning","",""
+"
+    מוודא ש-_parse_verdict מחזיר 'SAFE' כאשר תגובת ה-LLM
+    אינה מכילה את טוקן האיום.
+    ","0","test_parse_verdict_returns_safe","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_pii_leakage","",""
+"
+    בדיקת אבטחה: מוודאת שמנגנון ה-Tenant Isolation בתוך מסד הנתונים הוקטורי
+    מונע ממשתמש אחד לשלוף מסמכים של משתמש אחר, גם אם השאילתה הסמנטית 
+    זהה לחלוטין.
+    ","3624","test_semantic_tenant_isolation","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:18 UTC 2026","","test_tenant_isolation","",""
+"
+    מוודא ש-_parse_verdict מחזיר 'SAFE' כאשר ה-LLM לא מוצא הזרקה.
+    ","0","test_parse_verdict_safe_for_clean_text","tests","Sat Apr 18 12:36:15 UTC 2026","passed","Sat Apr 18 12:36:15 UTC 2026","","test_context_poisoning","",""
